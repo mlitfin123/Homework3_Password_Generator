@@ -15,53 +15,35 @@ function writePassword() {
 // generate password prompts
 function generatePassword(){
   var length = prompt("Enter a password length between 8 and 128");
-  var lower = confirm("Use lowercase letters?")
-  var upper = confirm("Use uppercase letters?")
-  var number = confirm("Use numbers?")
-  var symbol = confirm("Use symbols?")
 
   if (length < 8 || length > 128){
     alert("Please enter a length between 8 and 128");
   }
-
-  if (lower == true){
-    randomLower();
-    console.log(randomLower());
-  }
-  if (upper == true){
-    randomUpper();
-    console.log(randomUpper());
-  }
-  if (number == true){
-    randomNumber();
-    console.log(randomNumber());
-  }
-  if (symbol == true){
-    randomSymbol();
-    console.log(randomSymbol());
-  }
+  else {
+    var upper = confirm("Use uppercase letters?")
+    var lower = confirm("Use lowercase letters?")
+    var number = confirm("Use numbers?")
+    var symbol = confirm("Use symbols?")
+    var up = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var low = "abcdefghijklmnopqrstuvwxyz";
+    var num = '0123456789';
+    var sym = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
+    var password = "";
+    var char = "";
+    for (i=0; i<length; i++) {
+        e1 = Math.ceil(up.length * Math.random()*Math.random());
+        e2 = Math.ceil(low.length * Math.random()*Math.random());
+        e3 = Math.ceil(num.length * Math.random()*Math.random());
+        e4 = Math.ceil(sym.length * Math.random()*Math.random());
+        char += up.charAt(e1);
+        char += low.charAt(e2);
+        char += num.charAt(e3);
+        char += sym.charAt(e4);
+        password = char;
+    }
+    password=password.split('').sort(function(){return 0.5-Math.random()}).join('');
+    return password.substr(0,length);
 }
-
-//Generate random lower letter
-function randomLower(){
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
-
-//Generate random upper letter
-function randomUpper(){
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-}
-
-//Generate random number
-function randomNumber(){
-  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-}
-
-//Generate random symbol
-function randomSymbol(){
-  const symbols = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-  return symbols[Math.floor(Math.random() * symbols.length)];
-}
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);

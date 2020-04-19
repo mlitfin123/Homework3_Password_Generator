@@ -20,14 +20,14 @@ function generatePassword(){
     alert("Please enter a length between 8 and 128");
   }
   else {
-    var upper = confirm("Use uppercase letters?")
-    var lower = confirm("Use lowercase letters?")
-    var number = confirm("Use numbers?")
-    var symbol = confirm("Use symbols?")
+    var upper = confirm("Use uppercase letters?");
+    var lower = confirm("Use lowercase letters?");
+    var number = confirm("Use numbers?");
+    var symbol = confirm("Use symbols?");
     var up = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var low = "abcdefghijklmnopqrstuvwxyz";
-    var num = '0123456789';
-    var sym = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
+    var num = "0123456789";
+    var sym = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
     var password = "";
     var char = "";
     for (i=0; i<length; i++) {
@@ -35,10 +35,18 @@ function generatePassword(){
         e2 = Math.ceil(low.length * Math.random()*Math.random());
         e3 = Math.ceil(num.length * Math.random()*Math.random());
         e4 = Math.ceil(sym.length * Math.random()*Math.random());
-        char += up.charAt(e1);
+        if (upper == true){
+          char += up.charAt(e1);
+        }
+        if (lower == true){
         char += low.charAt(e2);
+        }
+        if (number == true){
         char += num.charAt(e3);
+        }
+        if (symbol == true){
         char += sym.charAt(e4);
+        }
         password = char;
     }
     password=password.split('').sort(function(){return 0.5-Math.random()}).join('');

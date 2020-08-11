@@ -1,4 +1,4 @@
-# Homework3_Password_Generator
+# Password_Generator
 https://mlitfin123.github.io/Homework3_Password_Generator/
 
 This project was done as a part of a homework project for the University of Miami Bootcamp.
